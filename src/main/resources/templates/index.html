@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Xebia assignment</title>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+<div class="container">
+
+<div th:switch="${products}">
+    <h2 th:case="null">No Product yet!</h2>
+        <div th:case="*">
+            <h1>Product Details</h1>
+            
+            <div class="row col-md-12 table-responsive">
+            <table id="ProductTable" class="table">
+                <thead>
+                    <tr>
+                       
+                       
+                        <th>BarCodde</th>
+                        <th>Updated Description</th>  
+                        <th>Average Price</th>
+                        <th>Low Price</th>
+                        <th>High Price</th>
+                        <th>Ideal Price(-max2,-min2,avg's-20%)</th>
+                        <th>No Of Prices</th>
+                        <th>Updated Notes</th>
+                       
+                        
+                         
+                    </tr>
+                </thead>
+                <tbody>
+                <tr th:each="product : ${products}">
+                   
+                    
+                    <td th:text="${product.barrcode}"></td>
+                    <td th:text="${product.description}"></td>               
+                    <td th:text="${product.avgprice}"></td>
+                    <td th:text="${product.lowprice}"></td>
+                    <td th:text="${product.highprice}"></td>
+                    <td th:text="${product.idealprice}"></td>
+                    <td th:text="${product.noofprices}"></td>
+                    <td th:text="${product.notes}"></td>
+                    
+                    
+                   
+                    <td><a th:href="@{/delete/{id}(id=${product.id})}">Delete</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>      
+    <p><a href="/saveproductform">Add a new Product</a></p>
+    <p><a href="/getStoreDetails">See all store details</a></p>
+</div>
+
+</div>
+
+</body>
+</html>

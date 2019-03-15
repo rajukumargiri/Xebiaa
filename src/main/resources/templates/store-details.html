@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Xebia assignment</title>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+<div class="container">
+
+<h3><a href="/"> <- Back to Product List</a></h3>
+
+<div th:switch="${stores}">
+    <h2 th:case="null">No store details yet!</h2>
+        <div th:case="*">
+            <h2>Store Details</h2>
+            
+            <div class="row col-md-12 table-responsive">
+            <table id="StoreTable" class="table">
+                <thead>
+                    <tr>
+                       
+                       
+                        <th>BarCodde</th>
+                        <th>Description</th>  
+                        <th> Price</th>
+                        <th>Notes</th>
+                 
+                    </tr>
+                </thead>
+                <tbody>
+                <tr th:each="store : ${stores}">
+                   
+                    
+                    <td th:text="${store.barrcode}"></td>
+                    <td th:text="${store.description}"></td>               
+                    <td th:text="${store.price}"></td>
+                    <td th:text="${store.notes}"></td>
+                    
+                    
+             
+                </tr>
+            </tbody>
+        </table>
+    </div>      
+    
+</div>
+
+</div>
+
+</body>
+</html>
